@@ -10,6 +10,6 @@ VAIDYUTI_SERVER = os.environ.get("VAIDYUTI_SERVER") or "localhost"
 VAIDYUTI_MQTT_SERVER = os.environ.get("VAIDYUTI_MQTT_SERVER") or VAIDYUTI_SERVER
 
 # The interval in seconds for publishing the new states.
-RUN_INTERVAL = int(os.environ.get("RUN_INTERVAL")) or 5
+RUN_INTERVAL = int(os.environ.get("RUN_INTERVAL") or 5)
 
 SUBSYSTEM_REPORTING = ("generation",)
