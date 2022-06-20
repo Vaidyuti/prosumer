@@ -12,7 +12,7 @@ class SubsystemBase:
         """
         Starts running the subsystem. Does nothing if runner already exists.
         """
-        if getattr(self, "runner"):
+        if getattr(self, "runner", None):
             return
         self.started_at = datetime.now()
         self.runner = self.run()
