@@ -26,7 +26,7 @@ class ProsumerMqttClient(Client):
     "Custom MQTT client for prosumer."
 
     def __init__(self):
-        self.vp_address = settings.PROFILE["vp_address"]
+        self.vp_address = str(settings.PROFILE["vp_address"])
         super().__init__(client_id=self.vp_address)
         self.on_connect = _on_connect
         self.on_disconnect = _on_disconnect
