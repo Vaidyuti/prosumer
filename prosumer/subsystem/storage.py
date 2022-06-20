@@ -13,3 +13,6 @@ class Storage(SubsystemBase, SupportsTechnologyTag, SupportsExport):
 
     def __init__(self, props: dict[str, any], **kwargs) -> None:
         super().__init__(**props, **kwargs)
+
+    def on_run(self):
+        print("running")

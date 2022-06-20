@@ -1,4 +1,5 @@
 from datetime import datetime
+from functools import cached_property
 from prosumer.settings import RUN_INTERVAL
 from utils.decorators import setInterval
 
@@ -14,7 +15,7 @@ class SubsystemBase:
         """
         if getattr(self, "runner", None):
             return
-        self.started_at = datetime.now()
+        self.start_time = datetime.now()
         self.runner = self.run()
 
     def stop(self):
@@ -34,3 +35,8 @@ class SubsystemBase:
 
     def on_run(self):
         raise NotImplementedError("run")
+
+    @cached_property
+    def start_date(self):
+        d = self.start_time.date()
+        return datetime(d.year, d.month, d.day)
