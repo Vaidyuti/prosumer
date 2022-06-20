@@ -11,5 +11,5 @@ class Storage(SubsystemBase, SupportsTechnologyTag, SupportsExport):
 
     usable_capacity: float
 
-    def __init__(self, **kwargs) -> None:
-        super().__init__(**kwargs)
+    def __init__(self, props: dict[str, any], **kwargs) -> None:
+        super().__init__(**props, **kwargs)

@@ -8,5 +8,5 @@ class Load(SubsystemBase, SupportsRunProfile):
     net_consumption = 0.0
     """The net consumption by the system in kW at present."""
 
-    def __init__(self, **kwargs) -> None:
-        super().__init__(**kwargs)
+    def __init__(self, props: dict[str, any], **kwargs) -> None:
+        super().__init__(**props, **kwargs)

@@ -22,5 +22,5 @@ class Generation(
     net_generation = 0.0
     """The net generation by the system in kW at present."""
 
-    def __init__(self, **kwargs) -> None:
-        super().__init__(**kwargs)
+    def __init__(self, props: dict[str, any], **kwargs) -> None:
+        super().__init__(**props, **kwargs)
