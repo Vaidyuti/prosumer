@@ -1,5 +1,15 @@
 from prosumer.subsystem.base import SubsystemBase
+from prosumer.subsystem.supports import SupportsExport, SupportsTechnologyTag
 
 
-class Storage(SubsystemBase):
-    pass
+class Storage(SubsystemBase, SupportsTechnologyTag, SupportsExport):
+
+    installed_kwh: float
+    """
+    The installed sotrage capacity in kWh.
+    """
+
+    usable_capacity: float
+
+    def __init__(self, **kwargs) -> None:
+        super().__init__(**kwargs)
