@@ -13,6 +13,25 @@ class SupportsExport:
     def __init__(self, **kwargs) -> None:
         super().__init__(**kwargs)
 
+    @property
+    def export_power(self) -> float:
+        """
+        The power at which the energy is being exported at present.
+        """
+        raise NotImplementedError()
+
+
+class SupportsImport:
+    def __init__(self, **kwargs) -> None:
+        super().__init__(**kwargs)
+
+    @property
+    def import_power(self) -> float:
+        """
+        The power at which energy is being imported at present.
+        """
+        raise NotImplementedError()
+
 
 class SupportsTechnologyTag:
     technology = "Unknown"
