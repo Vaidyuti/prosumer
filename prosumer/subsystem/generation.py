@@ -1,5 +1,4 @@
 from datetime import datetime
-from typing import Optional
 from prosumer.subsystem.base import SubsystemBase
 from prosumer.subsystem.supports import (
     SupportsExport,
@@ -28,3 +27,7 @@ class Generation(
 
     def on_run(self):
         self.generation = self.get_value_for(datetime.now())
+
+    @property
+    def export_power(self) -> float:
+        return self.generation
