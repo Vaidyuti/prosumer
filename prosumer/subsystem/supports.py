@@ -1,5 +1,6 @@
 from datetime import datetime
 from functools import cached_property
+from typing import Callable
 
 from utils.interpolate import Curves, remap
 
@@ -82,6 +83,7 @@ class SupportsRunProfile:
         #               current time
         # ------------|------*-----|------------>
         #             i      x    i+1
-        i = delta // self.profile_interval
+        i = int(delta // self.profile_interval)
         x_minus_i = (delta / self.profile_interval) % 1
-        return remap(Curves.sine(x_minus_i), 0, 1, *self.profile[i : i + 2])
+        _ = lambda x: self.profile[x % len(self.profile)]
+        return remap(Curves.sine(x_minus_i), 0, 1, _(i), _(i + 1))
