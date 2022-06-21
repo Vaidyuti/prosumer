@@ -23,12 +23,14 @@ class Storage(SupportsTechnologyTag, SupportImportAndExport, SubsystemBase):
     The State of charge of the storage system.
     """
 
+    export_power = 0.0
+    """
+    The net export power from the storage system.
+    """
+
     def __init__(self, props: dict[str, any], **kwargs) -> None:
         super().__init__(**props, **kwargs)
 
     def on_run(self):
         self.soc = 0.5
-
-    @property
-    def export_power(self) -> float:
-        return 0.0  # TODO: update this
+        self.export_power = 0.0

@@ -19,15 +19,11 @@ class Generation(
     """
 
     # Dynamic properties
-    generation = 0.0
+    export_power = 0.0
     """The net generation by the system in kW at present."""
 
     def __init__(self, props: dict[str, any], **kwargs) -> None:
         super().__init__(**props, **kwargs)
 
     def on_run(self):
-        self.generation = self.get_value_for(datetime.now())
-
-    @property
-    def export_power(self) -> float:
-        return self.generation
+        self.export_power = self.get_value_for(datetime.now())
