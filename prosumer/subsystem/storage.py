@@ -1,12 +1,13 @@
 from prosumer.subsystem.base import SubsystemBase
 from prosumer.subsystem.supports import (
+    SupportImportAndExport,
     SupportsExport,
     SupportsImport,
     SupportsTechnologyTag,
 )
 
 
-class Storage(SubsystemBase, SupportsTechnologyTag, SupportsExport, SupportsImport):
+class Storage(SubsystemBase, SupportsTechnologyTag, SupportImportAndExport):
 
     # Static Properties
     installed_kwh: float
@@ -31,7 +32,3 @@ class Storage(SubsystemBase, SupportsTechnologyTag, SupportsExport, SupportsImpo
     @property
     def export_power(self) -> float:
         return 0.0  # TODO: update this
-
-    @property
-    def import_power(self) -> float:
-        return -self.export_power

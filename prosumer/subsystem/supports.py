@@ -33,6 +33,19 @@ class SupportsImport:
         raise NotImplementedError()
 
 
+class SupportImportAndExport(SupportsImport, SupportsExport):
+    def __init__(self, **kwargs) -> None:
+        super().__init__(**kwargs)
+
+    @property
+    def export_power(self) -> float:
+        raise NotImplementedError()
+
+    @property
+    def import_power(self) -> float:
+        raise -self.export_power
+
+
 class SupportsTechnologyTag:
     technology = "Unknown"
     """
