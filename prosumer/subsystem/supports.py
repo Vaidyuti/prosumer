@@ -75,11 +75,11 @@ class SupportsRunProfile:
         """
         return 24 * 60 * 60 / len(self.profile)
 
-    def get_value_for(self, time: datetime):
+    def get_profile_value(self, at: datetime):
         """
         Evaluates the system's generic profile value for the specified time.
         """
-        delta = (time - self.start_date).seconds
+        delta = (at - self.start_date).seconds
         #               current time
         # ------------|------*-----|------------>
         #             i      x    i+1

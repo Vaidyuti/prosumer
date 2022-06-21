@@ -13,4 +13,4 @@ class Load(SupportsRunProfile, SupportsImport, SubsystemBase):
         super().__init__(**props, **kwargs)
 
     def on_run(self):
-        self.import_power = self.get_value_for(datetime.now())
+        self.import_power = self.get_profile_value(at=datetime.now())

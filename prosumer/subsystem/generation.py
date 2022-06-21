@@ -26,4 +26,4 @@ class Generation(
         super().__init__(**props, **kwargs)
 
     def on_run(self):
-        self.export_power = self.get_value_for(datetime.now())
+        self.export_power = self.get_profile_value(at=datetime.now())
