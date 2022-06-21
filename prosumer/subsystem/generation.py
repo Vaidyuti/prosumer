@@ -8,7 +8,7 @@ from prosumer.subsystem.supports import (
 
 
 class Generation(
-    SubsystemBase, SupportsRunProfile, SupportsTechnologyTag, SupportsExport
+    SupportsRunProfile, SupportsTechnologyTag, SupportsExport, SubsystemBase
 ):
 
     # Static properties

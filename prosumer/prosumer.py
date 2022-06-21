@@ -6,7 +6,7 @@ from prosumer.subsystem import Generation, Load, Storage
 from prosumer.subsystem.supports import SupportImportAndExport
 
 
-class Prosumer(SubsystemBase, SupportImportAndExport):
+class Prosumer(SupportImportAndExport, SubsystemBase):
     def __init__(
         self,
         vp_address: str = PROFILE["vp_address"],

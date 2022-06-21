@@ -3,7 +3,7 @@ from prosumer.subsystem.base import SubsystemBase
 from prosumer.subsystem.supports import SupportsImport, SupportsRunProfile
 
 
-class Load(SubsystemBase, SupportsRunProfile, SupportsImport):
+class Load(SupportsRunProfile, SupportsImport, SubsystemBase):
 
     # Dynamic properties
     consumption = 0.0

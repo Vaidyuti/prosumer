@@ -7,7 +7,7 @@ from prosumer.subsystem.supports import (
 )
 
 
-class Storage(SubsystemBase, SupportsTechnologyTag, SupportImportAndExport):
+class Storage(SupportsTechnologyTag, SupportImportAndExport, SubsystemBase):
 
     # Static Properties
     installed_kwh: float
