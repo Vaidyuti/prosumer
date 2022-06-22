@@ -21,13 +21,18 @@ class Prosumer(SupportImportAndExport, SubsystemBase):
         self.loads: list[Load] = list(map(Load, loads))
         self.storages: list[Storage] = list(map(Storage, storages))
         self.mqtt_client = ProsumerMqttClient()
-
         for sys in (*self.generations, *self.loads, *self.storages):
             sys.start()
+        self.mqtt_client.set_state("is_online", True)
 
     def on_run(self):
-        print(
-            f"total-gen={self.total_generation}KW  total-load={self.total_load}KW  net-gen={self.net_generation}KW  self-cons={self.self_consumption}KW"
+        self.mqtt_client.set_states(
+            {
+                "generation": self.total_generation,
+                "load": self.total_load,
+                "export": self.export_power,
+                "self_consumption": self.self_consumption,
+            }
         )
 
     @property
@@ -48,4 +53,4 @@ class Prosumer(SupportImportAndExport, SubsystemBase):
 
     @property
     def export_power(self) -> float:
-        return self.total_generation
+        return self.net_generation
